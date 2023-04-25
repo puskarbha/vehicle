@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2022 at 11:08 AM
--- Server version: 10.1.40-MariaDB
--- PHP Version: 7.3.5
+-- Generation Time: Apr 25, 2023 at 04:58 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -53,7 +52,7 @@ CREATE TABLE `booking` (
   `booking_ID` int(11) NOT NULL,
   `vehicle_ID` int(11) NOT NULL,
   `user_ID` int(11) NOT NULL,
-  `book_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `book_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `pickup` varchar(100) NOT NULL,
   `dropoff` varchar(100) NOT NULL,
   `location` varchar(250) NOT NULL,
@@ -67,7 +66,8 @@ CREATE TABLE `booking` (
 INSERT INTO `booking` (`booking_ID`, `vehicle_ID`, `user_ID`, `book_date`, `pickup`, `dropoff`, `location`, `status`) VALUES
 (1, 2, 2, '2022-01-31 07:12:57', '2022-02-01', '2022-02-04', 'sdfd', 0),
 (2, 3, 2, '2022-01-31 07:14:38', '2009-05-18', '1988-09-13', 'Distinctio Proident', 0),
-(3, 2, 2, '2022-01-31 06:24:31', '2022-01-27', '2022-01-28', 'Proident sunt ut to', 1);
+(3, 2, 2, '2022-01-31 06:24:31', '2022-01-27', '2022-01-28', 'Proident sunt ut to', 1),
+(4, 3, 3, '2023-04-25 02:46:28', '2023-04-05', '2023-04-05', 'lakitpur', 0);
 
 -- --------------------------------------------------------
 
@@ -108,7 +108,8 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`contact_ID`, `name`, `email`, `subject`, `message`, `user_ID`) VALUES
-(3, 'Gil Spears', 'notyfe@mailinator.com', 'Ipsam quaerat nostru', 'Animi quibusdam exe', 2);
+(3, 'Gil Spears', 'notyfe@mailinator.com', 'Ipsam quaerat nostru', 'Animi quibusdam exe', 2),
+(4, 'Bhim', 'bindaspuskar@gmail.com', 'physics', 'vfdvdv', 3);
 
 -- --------------------------------------------------------
 
@@ -135,7 +136,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_ID`, `firstname`, `lastname`, `email`, `phone`, `birth`, `license`, `state`, `address`, `zip`, `password`) VALUES
-(2, 'Pamela', 'Branch', 'harry@gmail.com', 1, '2000-10-14', 'Et sit ipsum commod', 'Aut proident dolore', 'Eveniet dolores und', '28660', '$2y$10$6vYTmOi86s.x/N17dW6VZuaexX7fKp/dOwaXu/h5vLRWHUNNmK8XC');
+(2, 'Pamela', 'Branch', 'harry@gmail.com', 1, '2000-10-14', 'Et sit ipsum commod', 'Aut proident dolore', 'Eveniet dolores und', '28660', '$2y$10$6vYTmOi86s.x/N17dW6VZuaexX7fKp/dOwaXu/h5vLRWHUNNmK8XC'),
+(3, 'puskar', 'bhandari', 'bindaspuskar@gmail.com', 9867343148, '2023-03-27', 'puskarbha@gmail.com', '1', 'Sarawal-1', '12352', '$2y$10$xDrMo0mHo.tBO5BSH8o8eeiTwEWDXxujG8jLbqgIxHu6dJ2y4S7P.');
 
 -- --------------------------------------------------------
 
@@ -157,7 +159,7 @@ CREATE TABLE `vehicle` (
   `price` decimal(10,2) NOT NULL,
   `image` varchar(200) NOT NULL,
   `submitted_by` int(11) NOT NULL,
-  `published_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `published_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -221,7 +223,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `booking_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `booking_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -233,13 +235,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `contact_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `contact_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `vehicle`
